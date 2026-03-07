@@ -23,7 +23,11 @@ public class LaptopBuilderTest {
         System.out.println("Test 1: Basic Laptop");
 
         // TODO: Create laptop using builder (replace null)
-        Laptop laptop = null;
+        Laptop laptop = new Laptop.LaptopBuilder()
+                .brand("Dell")
+                .ramGB(16)
+                .storageGB(512)
+                .build();
 
         assert laptop.getBrand().equals("Dell") : "Brand should be Dell";
         assert laptop.getRamGB() == 16 : "RAM should be 16GB";
