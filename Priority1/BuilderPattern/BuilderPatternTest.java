@@ -1,5 +1,5 @@
 // Test class for Builder Pattern
-// Run this after implementing Pizza.java
+// TODO: Implement testBasicPizza() method
 
 public class BuilderPatternTest {
 
@@ -14,9 +14,12 @@ public class BuilderPatternTest {
         System.out.println("\n=== All tests passed ===");
     }
 
+    // TODO: Create a Large pizza with cheese only
+    // Use: new Pizza.PizzaBuilder().size("Large").addCheese().build()
     private static void testBasicPizza() {
         System.out.println("Test 1: Basic Pizza");
 
+        // TODO: Create pizza using builder (replace null)
         Pizza pizza = new Pizza.PizzaBuilder()
                 .size("Large")
                 .addCheese()
@@ -77,11 +80,7 @@ public class BuilderPatternTest {
     private static void testChainedBuilding() {
         System.out.println("Test 4: Method Chaining");
 
-        // Test that builder returns 'this' for chaining
-        Pizza.PizzaBuilder builder = new Pizza.PizzaBuilder();
-
-        // Chain multiple calls
-        Pizza pizza = builder
+        Pizza pizza = new Pizza.PizzaBuilder()
                 .size("Small")
                 .addCheese()
                 .addPepperoni()
