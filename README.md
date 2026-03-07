@@ -192,6 +192,56 @@ Understand these patterns but implementation can be looked up when needed.
 ```
 javaLowLevelDesign/
 ├── README.md
+├── Priority1/
+│   ├── BuilderPattern/
+│   │   ├── PizzaExample/       # Pizza + PizzaBuilderTest
+│   │   └── LaptopExample/      # Laptop + LaptopBuilderTest
+│   ├── Singleton/
+│   │   └── LoggerExample/      # Logger + LoggerSingletonTest
+│   ├── FactoryMethod/
+│   │   └── PaymentExample/     # Payment, PaymentFactory + PaymentFactoryTest
+│   ├── Adapter/
+│   │   └── MediaPlayerExample/  # MediaPlayer, VlcPlayerAdapter + AdapterTest
+│   ├── Decorator/
+│   │   └── CoffeeExample/      # Beverage, CoffeeDecorator + CoffeeDecoratorTest
+│   ├── Facade/
+│   │   └── HomeTheaterExample/ # HomeTheaterFacade + FacadeTest
+│   ├── Strategy/
+│   │   └── PaymentStrategyExample/ # PaymentStrategy, ShoppingCart + StrategyTest
+│   ├── Observer/
+│   │   └── WeatherExample/     # WeatherSubject, DisplayObserver + ObserverTest
+│   └── Command/
+│       └── TextEditorExample/  # Command, CommandInvoker + CommandTest
+├── Priority2/
+│   ├── AbstractFactory/
+│   │   └── UIThemeExample/     # GUIFactory, Dark/Light themes + AbstractFactoryTest
+│   ├── Prototype/
+│   │   └── ShapeExample/       # Shape, Circle clone + PrototypeTest
+│   ├── Proxy/
+│   │   └── ImageExample/       # Image, ImageProxy (lazy) + ProxyTest
+│   ├── Composite/
+│   │   └── FileSystemExample/  # FileSystemComponent, File, Folder + CompositeTest
+│   ├── TemplateMethod/
+│   │   └── DataProcessorExample/ # DataProcessor, CsvProcessor + TemplateMethodTest
+│   ├── Iterator/
+│   │   └── CollectionExample/ # SimpleCollection, SimpleIterator + IteratorTest
+│   └── State/
+│       └── VendingMachineExample/ # VendingState, VendingMachine + StateTest
+├── Priority3/
+│   ├── ObjectPool/
+│   │   └── ConnectionPoolExample/ # ConnectionPool, PooledConnection + ObjectPoolTest
+│   ├── Bridge/
+│   │   └── DeviceRemoteExample/   # Device, RemoteControl (Bridge) + BridgeTest
+│   ├── Flyweight/
+│   │   └── CharacterExample/      # FlyweightCharacter, CharacterFactory + FlyweightTest
+│   ├── ChainOfResponsibility/
+│   │   └── LoggerExample/         # LogHandler chain + ChainOfResponsibilityTest
+│   ├── Mediator/
+│   │   └── ChatRoomExample/       # ChatMediator, ChatRoom, User + MediatorTest
+│   ├── Memento/
+│   │   └── EditorExample/        # Memento, Editor, History + MementoTest
+│   └── Visitor/
+│       └── ShapeVisitorExample/   # Shape, ShapeVisitor, AreaVisitor + VisitorTest
 ├── creational/
 │   ├── singleton/
 │   ├── factory/
@@ -214,6 +264,132 @@ javaLowLevelDesign/
     ├── state/
     └── chain-of-responsibility/
 ```
+
+---
+
+## Make commands for tests
+
+From the **project root** (`javaLowLevelDesign/`), use `make` to compile and run tests. Each `run-*` target compiles **only that example** (so incomplete skeletons like Laptop don’t break others), then runs the test.
+
+### General commands
+
+| Command | Description |
+|--------|-------------|
+| `make build` | Compile **all** examples to `out/` (fails if any example is incomplete). |
+| `make clean` | Remove the `out/` directory. |
+| `make help` | Print a short list of run targets. |
+
+### Priority 1 – run one test
+
+| Command | Example / test run |
+|--------|---------------------|
+| `make run-pizza` | Builder (Pizza) |
+| `make run-laptop` | Builder (Laptop) |
+| `make run-logger` | Singleton (Logger) |
+| `make run-payment-factory` | Factory Method (Payment) |
+| `make run-adapter` | Adapter (MediaPlayer) |
+| `make run-decorator` | Decorator (Coffee) |
+| `make run-facade` | Facade (HomeTheater) |
+| `make run-strategy` | Strategy (ShoppingCart) |
+| `make run-observer` | Observer (Weather) |
+| `make run-command` | Command (TextEditor) |
+
+**Run all Priority 1 tests:**  
+`make run-p1` (runs the 10 commands above in sequence).
+
+### Priority 2 – run one test
+
+| Command | Example / test run |
+|--------|---------------------|
+| `make run-abstract-factory` | Abstract Factory (UI theme) |
+| `make run-prototype` | Prototype (Shape/Circle) |
+| `make run-proxy` | Proxy (lazy Image) |
+| `make run-composite` | Composite (file system) |
+| `make run-template` | Template Method (data processor) |
+| `make run-iterator` | Iterator (collection) |
+| `make run-state` | State (vending machine) |
+
+### Priority 3 – run one test
+
+| Command | Example / test run |
+|--------|---------------------|
+| `make run-pool` | Object Pool (connection pool) |
+| `make run-bridge` | Bridge (device remote) |
+| `make run-flyweight` | Flyweight (character) |
+| `make run-chain` | Chain of Responsibility (logger) |
+| `make run-mediator` | Mediator (chat room) |
+| `make run-memento` | Memento (editor undo) |
+| `make run-visitor` | Visitor (shape area) |
+
+### Usage
+
+```bash
+cd javaLowLevelDesign
+make run-pizza
+```
+
+Requires Java (e.g. JDK 11+) and `make`. Output is written to `out/` (in `.gitignore`).
+
+---
+
+## How We Create Assignments (Pattern & Workflow)
+
+This section describes the **assignment pattern** used in this repo: how examples are structured, who implements what, and how to run them.
+
+### Workflow
+
+| Role | Responsibility |
+|------|----------------|
+| **Setup (skeleton)** | Provide the pattern file (e.g. `Pizza.java`, `Laptop.java`) with **TODO comments** for fields, constructor, getters, and builder inner class. No package; minimal comments. |
+| **You (learner)** | Implement the design pattern in the main class (e.g. fill in `Pizza`, `Laptop`) by following the TODOs. |
+| **Tests** | Test class (e.g. `PizzaBuilderTest.java`) is **mostly complete**. Only **one** test method is left for you to implement: **creating the object using the builder** (e.g. replace `null` with the builder chain). All other test methods are already written. |
+
+So: **you implement the pattern + one “builder call” in the test**; the rest of the test code is given.
+
+### Per-pattern structure
+
+For each pattern we add **one folder per example** under the pattern (e.g. Builder → PizzaExample, LaptopExample):
+
+```
+Priority1/BuilderPattern/
+├── PizzaExample/
+│   ├── Pizza.java           ← You implement (TODOs: fields, constructor, getters, Builder class)
+│   └── PizzaBuilderTest.java ← You implement one method (e.g. testBasicPizza: create Pizza via builder)
+└── LaptopExample/
+    ├── Laptop.java
+    └── LaptopBuilderTest.java
+```
+
+- **Naming:** `&lt;Thing&gt;.java` (the product) and `&lt;Thing&gt;BuilderTest.java` (the test runner).
+- **Packages:** Each example has its own package (e.g. `Priority1.BuilderPattern.PizzaExample`) so duplicate class names (e.g. `Circle` in Prototype vs Visitor) don’t conflict. Each test can be run independently.
+- **Independent:** Each example folder is self-contained; run by its main class (see below).
+
+### What you implement
+
+1. **In the product class (e.g. `Pizza.java`, `Laptop.java`):**
+   - Final fields, private constructor taking the builder, getters, static inner Builder class with mutable fields, setter methods that return `this`, and `build()`.
+
+2. **In the test class (e.g. `PizzaBuilderTest.java`):**
+   - Only **one** method where you **create the object** (e.g. `Pizza pizza = new Pizza.PizzaBuilder().size("Large").addCheese().build();`). The rest of the tests are already implemented.
+
+### How to run (independently)
+
+- **From IDE:**  
+  Use **one source root** (project root). Run the main class for the example you want, e.g.:
+  - `Priority1.BuilderPattern.PizzaExample.PizzaBuilderTest`
+  - `Priority2.Prototype.ShapeExample.PrototypeTest`
+  - `Priority3.Visitor.ShapeVisitorExample.VisitorTest`  
+  Each example has its own package, so you can run any test without conflicts (e.g. `Circle` in Prototype vs Visitor).
+- **From terminal (project root) – use the Makefile:** see **Make commands for tests** below.
+  Manual compile/run (no Makefile):
+  - `javac -d out -sourcepath . Priority1/BuilderPattern/PizzaExample/*.java`
+  - `java -cp out Priority1.BuilderPattern.PizzaExample.PizzaBuilderTest`
+
+### Summary
+
+- One **pattern** (e.g. Builder) → multiple **examples** (Pizza, Laptop), each in its own folder and package.
+- You **implement the pattern** in the main class and **one builder-call** in the test; everything else is provided.
+- Each example is **independent**; run with `make run-<name>` or from the IDE using its main class.
 
 ---
 

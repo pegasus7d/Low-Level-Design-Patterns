@@ -1,10 +1,11 @@
-// Test class for Builder Pattern
+// Test class for Pizza Builder Pattern
 // TODO: Implement testBasicPizza() method
+package Priority1.BuilderPattern.PizzaExample;
 
-public class BuilderPatternTest {
+public class PizzaBuilderTest {
 
     public static void main(String[] args) {
-        System.out.println("=== Builder Pattern Tests ===\n");
+        System.out.println("=== Pizza Builder Pattern Tests ===\n");
 
         testBasicPizza();
         testFullyLoadedPizza();

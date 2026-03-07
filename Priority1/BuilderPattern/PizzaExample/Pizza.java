@@ -1,5 +1,6 @@
 // Product class - what we are building
 // TODO: Make this class immutable (all fields final, no setters)
+package Priority1.BuilderPattern.PizzaExample;
 
 public class Pizza {
 
