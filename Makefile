@@ -30,6 +30,11 @@ P3_CHAIN    = Priority3/ChainOfResponsibility/LoggerExample
 P3_MEDIATOR = Priority3/Mediator/ChatRoomExample
 P3_MEMENTO  = Priority3/Memento/EditorExample
 P3_VISITOR  = Priority3/Visitor/ShapeVisitorExample
+SOLID_SRP   = SolidPrinciples/SingleResponsibility/ReportExample
+SOLID_OCP   = SolidPrinciples/OpenClosed/ShapeExample
+SOLID_LSP   = SolidPrinciples/LiskovSubstitution/ShapeExample
+SOLID_ISP   = SolidPrinciples/InterfaceSegregation/WorkerExample
+SOLID_DIP   = SolidPrinciples/DependencyInversion/NotificationExample
 
 # Build: compile ALL examples (fails if any skeleton is incomplete; use run-* to build/run one)
 build:
@@ -38,6 +43,7 @@ build:
 	@$(JAVAC) $(P1_ADAPTER)/*.java $(P1_DECORATOR)/*.java $(P1_FACADE)/*.java $(P1_STRATEGY)/*.java $(P1_OBSERVER)/*.java $(P1_COMMAND)/*.java
 	@$(JAVAC) $(P2_ABSTRACT)/*.java $(P2_PROTOTYPE)/*.java $(P2_PROXY)/*.java $(P2_COMPOSITE)/*.java $(P2_TEMPLATE)/*.java $(P2_ITERATOR)/*.java $(P2_STATE)/*.java
 	@$(JAVAC) $(P3_POOL)/*.java $(P3_BRIDGE)/*.java $(P3_FLYWEIGHT)/*.java $(P3_CHAIN)/*.java $(P3_MEDIATOR)/*.java $(P3_MEMENTO)/*.java $(P3_VISITOR)/*.java
+	@$(JAVAC) $(SOLID_SRP)/*.java $(SOLID_OCP)/*.java $(SOLID_LSP)/*.java $(SOLID_ISP)/*.java $(SOLID_DIP)/*.java
 	@echo "Build done. Class files in $(OUT)/"
 
 # Run targets: compile ONLY that example then run (so incomplete skeletons don't break others)
@@ -137,6 +143,23 @@ run-visitor:
 	@mkdir -p $(OUT) && $(JAVAC) $(P3_VISITOR)/*.java
 	$(JAVA) Priority3.Visitor.ShapeVisitorExample.VisitorTest
 
+# SOLID principles
+run-srp:
+	@mkdir -p $(OUT) && $(JAVAC) $(SOLID_SRP)/*.java
+	$(JAVA) SolidPrinciples.SingleResponsibility.ReportExample.SRPTest
+run-ocp:
+	@mkdir -p $(OUT) && $(JAVAC) $(SOLID_OCP)/*.java
+	$(JAVA) SolidPrinciples.OpenClosed.ShapeExample.OpenClosedTest
+run-lsp:
+	@mkdir -p $(OUT) && $(JAVAC) $(SOLID_LSP)/*.java
+	$(JAVA) SolidPrinciples.LiskovSubstitution.ShapeExample.LSPTest
+run-isp:
+	@mkdir -p $(OUT) && $(JAVAC) $(SOLID_ISP)/*.java
+	$(JAVA) SolidPrinciples.InterfaceSegregation.WorkerExample.ISPTest
+run-dip:
+	@mkdir -p $(OUT) && $(JAVAC) $(SOLID_DIP)/*.java
+	$(JAVA) SolidPrinciples.DependencyInversion.NotificationExample.DIPTest
+
 # Run all Priority1 tests (each compiles only its own example)
 run-p1: run-pizza run-laptop run-logger run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command
 
@@ -155,7 +178,8 @@ help:
 	@echo "  make run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command"
 	@echo "  make run-abstract-factory run-prototype run-proxy run-composite run-template run-iterator run-state"
 	@echo "  make run-pool run-bridge run-flyweight run-chain run-mediator run-memento run-visitor"
+	@echo "  make run-srp run-ocp run-lsp run-isp run-dip   - SOLID principles"
 	@echo "  make run-p1         - run all Priority1 tests"
 	@echo "  make clean         - remove $(OUT)/"
 
-.PHONY: build clean help run-pizza run-laptop run-logger run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command run-abstract-factory run-prototype run-proxy run-composite run-template run-iterator run-state run-pool run-bridge run-flyweight run-chain run-mediator run-memento run-visitor run-p1
+.PHONY: build clean help run-pizza run-laptop run-logger run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command run-abstract-factory run-prototype run-proxy run-composite run-template run-iterator run-state run-pool run-bridge run-flyweight run-chain run-mediator run-memento run-visitor run-srp run-ocp run-lsp run-isp run-dip run-p1

@@ -81,6 +81,20 @@ Understand these patterns but implementation can be looked up when needed.
 
 ---
 
+## SOLID Principles
+
+Foundational OO principles; each has a small assignment in `SolidPrinciples/`.
+
+| Principle | Description | Example in repo |
+|-----------|-------------|------------------|
+| **S**ingle Responsibility | One class, one reason to change | ReportGenerator (generate) vs ReportRepository (save) |
+| **O**pen/Closed | Open for extension, closed for modification | New shapes (e.g. Triangle) without changing Circle/Rectangle |
+| **L**iskov Substitution | Subtypes substitutable for base type | Square as its own type (not extending Rectangle) |
+| **I**nterface Segregation | Don’t depend on interfaces you don’t use | Robot implements only Workable, not Eatable |
+| **D**ependency Inversion | Depend on abstractions, not concretions | UserService depends on MessageSender, not EmailSender |
+
+---
+
 ## Pattern Relationships
 
 ```
@@ -242,6 +256,17 @@ javaLowLevelDesign/
 │   │   └── EditorExample/        # Memento, Editor, History + MementoTest
 │   └── Visitor/
 │       └── ShapeVisitorExample/   # Shape, ShapeVisitor, AreaVisitor + VisitorTest
+├── SolidPrinciples/
+│   ├── SingleResponsibility/
+│   │   └── ReportExample/         # ReportGenerator, ReportRepository + SRPTest
+│   ├── OpenClosed/
+│   │   └── ShapeExample/          # Shape, Circle, Rectangle, Triangle + OpenClosedTest
+│   ├── LiskovSubstitution/
+│   │   └── ShapeExample/          # Rectangle, Square + LSPTest
+│   ├── InterfaceSegregation/
+│   │   └── WorkerExample/         # Workable, Eatable, Human, Robot + ISPTest
+│   └── DependencyInversion/
+│       └── NotificationExample/   # MessageSender, EmailSender, UserService + DIPTest
 ├── creational/
 │   ├── singleton/
 │   ├── factory/
@@ -320,6 +345,16 @@ From the **project root** (`javaLowLevelDesign/`), use `make` to compile and run
 | `make run-mediator` | Mediator (chat room) |
 | `make run-memento` | Memento (editor undo) |
 | `make run-visitor` | Visitor (shape area) |
+
+### SOLID principles – run one test
+
+| Command | Example / test run |
+|--------|---------------------|
+| `make run-srp` | Single Responsibility (Report generate + save) |
+| `make run-ocp` | Open/Closed (Shape + Triangle) |
+| `make run-lsp` | Liskov Substitution (Square) |
+| `make run-isp` | Interface Segregation (Robot / Workable) |
+| `make run-dip` | Dependency Inversion (UserService + MessageSender) |
 
 ### Usage
 
@@ -407,7 +442,8 @@ Priority1/BuilderPattern/
 1. **Week 1-2**: Priority 1 patterns (Singleton, Factory, Builder, Adapter, Decorator, Facade, Strategy, Observer, Command)
 2. **Week 3**: Priority 2 patterns
 3. **Week 4**: Priority 3 patterns + comparison
-4. **Ongoing**: Practice implementing from scratch
+4. **SOLID**: `SolidPrinciples/` — SRP, OCP, LSP, ISP, DIP assignments (`make run-srp`, `run-ocp`, etc.)
+5. **Ongoing**: Practice implementing from scratch
 
 ---
 
