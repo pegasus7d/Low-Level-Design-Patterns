@@ -10,6 +10,6 @@ public class Robot implements Workable {
     @Override
     public String work() {
         // TODO: return a string like "Robot working"
-        return null;
+        return "Robot working";
     }
 }

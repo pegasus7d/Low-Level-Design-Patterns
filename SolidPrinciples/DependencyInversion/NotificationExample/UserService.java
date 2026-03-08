@@ -19,5 +19,6 @@ public class UserService {
 
     public void notifyUser(String userId, String message) {
         // TODO: messageSender.send(userId, message);
+        messageSender.send(userId,message);
     }
 }

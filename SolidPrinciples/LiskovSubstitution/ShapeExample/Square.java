@@ -21,6 +21,6 @@ public class Square {
 
     // TODO: return side * side
     public double area() {
-        return 0;
+        return  side * side;
     }
 }
