@@ -201,6 +201,93 @@ Foundational OO principles; each has a small assignment in `SolidPrinciples/`.
 
 ---
 
+## Important Low Level Design Questions
+
+Classic LLD problems frequently asked in interviews. Practice designing classes, relationships, and key flows before coding.
+
+### LLD Interview Problems (core 12)
+
+Matches the standard “LLD Interview Problems” list; practice these first. Difficulty: **M** = Medium, **H** = Hard.
+
+| # | Problem | Difficulty | What to design | Key patterns |
+|---|---------|------------|-----------------|---------------|
+| 1 | **Design Tic-Tac-Toe Game** | M | Board, 2 players, move, win/draw check, turn | State, Strategy (validation) |
+| 2 | **Design Chess Game** | H | Board, pieces, moves, capture, check/checkmate, turn | State, Strategy (move rules) |
+| 3 | **Design Snake & Food Game** | M | Board, snake (body segments), food, grow, direction, collision, score | State, Observer (score/game over) |
+| 4 | **Design Parking Lot** | M | Slots (bike/car/truck), vehicle types, assign/release, payment | State, Strategy (pricing), Factory |
+| 5 | **Design Elevator System** | H | Elevator, floors, requests (up/down), scheduling (SCAN), door | State, Command, Observer |
+| 6 | **Design Inventory Management System** | M | Products, stock, add/remove/reserve, low-stock alert, orders | State, Observer (alerts) |
+| 7 | **Design Car Rental System** | M | Vehicles, booking by date, return, pricing, availability | State, Strategy (pricing) |
+| 8 | **Design Vending Machine** | M | Items, coins/notes, select, dispense, change | State, Strategy (payment) |
+| 9 | **Design File System** | H | Directories, files, search, permissions, tree | Composite, Proxy (lazy) |
+| 10 | **Design Logging System** | M | Log levels, handlers (file/console), format, async | Chain of Responsibility, Singleton |
+| 11 | **Design Splitwise** | H | Users, expenses, split (equal/percent/custom), balances, settle | Strategy (split), data structures |
+| 12 | **Design ATM Machine** | M | Card, PIN, account, withdraw/deposit/balance, transaction log | State, Command, Singleton (session) |
+
+### LLD + Concurrency Interview Problems
+
+These add concurrency/thread-safety and distributed-style thinking.
+
+| # | Problem | What to design | Key patterns / concepts |
+|---|---------|----------------|--------------------------|
+| 1 | **Design Movie Ticket Booking System** | Theatres, shows, seats, book/cancel, concurrent booking, lock seats | State (seat), locking, idempotency |
+| 2 | **Design Cache** | Get/put, eviction (LRU/LFU), TTL, thread-safe, capacity | Strategy (eviction), concurrent structures |
+| 3 | **Design Pub-Sub Model (e.g. Kafka-style)** | Topics, producers, consumers, offset, partition, delivery | Observer, queue, at-least-once / exactly-once |
+| 4 | **Design Rate Limiter (LLD)** | Limit by user/IP, sliding window or token bucket, allow/deny, thread-safe | Strategy (algorithm), Singleton (config) |
+
+### Very Common (extended list)
+
+| Question | What to design | Key patterns / concepts |
+|----------|----------------|--------------------------|
+| **Parking Lot** | Slots (types: bike/car/truck), vehicle types, assign/release slot, payment | State, Strategy (pricing), maybe Factory |
+| **Elevator / Lift** | Elevator, floors, requests (up/down), scheduling (e.g. SCAN), door open/close | State, Command, Observer |
+| **Library Management** | Books, members, borrow/return, reservations, fines | State (book status), Strategy (fine calculation) |
+| **Vending Machine** | Items, coins/notes, select item, dispense, change | State, Strategy (payment) |
+| **ATM / Banking** | Card, PIN, account, withdraw/deposit/balance, transaction log | State, Command, Singleton (session) |
+| **Chess / Tic-Tac-Toe** | Board, pieces, moves, win/draw check, turn | State, Strategy (move validation) |
+| **Hotel Booking** | Rooms, room types, dates, booking/cancel, search | Factory (room types), State (booking status) |
+| **Restaurant / Food Ordering** | Menu, order, kitchen, payment, table | Command (order), Observer (notify kitchen), State |
+| **Deck of Cards / Blackjack** | Deck, card, shuffle, deal, hand, rules | Factory, State (game state) |
+| **Rate Limiter** | Limit by user/IP, sliding window or token bucket, allow/deny | Strategy (algorithm), Singleton (config) |
+
+### Common
+
+| Question | What to design | Key patterns / concepts |
+|----------|----------------|--------------------------|
+| **Online Chess (multiplayer)** | Board, players, move validation, turn, sync | State, Observer (notify other player) |
+| **Snakes and Ladders** | Board, dice, players, snakes/ladders, win condition | State, simple OOP |
+| **Movie Ticket Booking** | Theatres, shows, seats, book/cancel, payment | Factory (seat types), State (seat status) |
+| **Splitwise** | Users, expenses, split (equal/percent/custom), balances | Strategy (split type), data structures for balances |
+| **Amazon / E-commerce (LLD)** | Product, cart, order, payment, inventory | Observer (inventory), Strategy (payment), State (order) |
+| **File System** | Directories, files, search, permissions | Composite, Proxy (lazy load) |
+| **Logger** | Log levels, multiple handlers (file/console), format | Chain of Responsibility, Singleton |
+| **Notification System** | Channels (email/SMS/push), users, send | Strategy (channel), Observer |
+| **Traffic Light Controller** | Lights, phases, timers, sensors | State, Observer |
+| **Coffee Vending Machine** | Ingredients, recipes, dispense, refill | State, Strategy (recipe) |
+
+### Good to know
+
+| Question | What to design | Key patterns / concepts |
+|----------|----------------|--------------------------|
+| **Car Rental** | Vehicles, booking by date, return, pricing | State, Strategy (pricing) |
+| **Online Auction** | Item, bid, bidder, close auction, winner | Observer (outbid), State |
+| **Parking Lot (multi-floor)** | Floors, slot types, display board | Composite (floor → slots), Observer |
+| **LRU Cache** | Get/put, eviction when full | Data structure (map + doubly linked list) |
+| **Design a Map (like Google Maps)** | Location, route, shortest path | Graph, algorithms (BFS/Dijkstra) — LLD focuses on classes |
+| **WhatsApp / Chat (LLD)** | User, chat, message, group, send/deliver/read | Observer, Mediator (group) |
+| **Uber / Cab Booking (LLD)** | Rider, driver, trip, location, matching | State (trip), Observer (location updates) |
+| **Calendar / Meeting Scheduler** | Events, rooms, conflict check, invitees | State, Strategy (scheduling) |
+| **Trello / Kanban Board** | Board, list, card, move card, assignee | State, Observer, Composite (board → lists → cards) |
+| **YouTube (LLD)** | User, video, playlist, like/comment, recommend | Observer, Strategy (recommendation stub) |
+
+### How to use this list
+
+1. **Pick 5–8** from “Very Common” and design on paper/whiteboard (classes, main methods, 1–2 flows).
+2. **Code 2–3** end-to-end (e.g. Parking Lot, Elevator, Vending Machine) in Java using patterns from this repo.
+3. For each: identify **entities**, **states**, **who notifies whom**, and which **pattern** fits (State, Strategy, Observer, Command, etc.).
+
+---
+
 ## Project Structure
 
 ```
