@@ -12,6 +12,7 @@ public class ReportGenerator {
     // TODO: Generate a Report with given title and content from sections (one line per section)
     public Report generateReport(String title, String[] sections) {
         // TODO: Join sections with "\n" to form content, then return new Report(title, content)
-        return null;
+        String content=String.join("\n",sections);
+        return new Report(title,content);
     }
 }

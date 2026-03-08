@@ -10,13 +10,14 @@ package SolidPrinciples.SingleResponsibility.ReportExample;
 public class ReportRepository {
 
     // TODO: Add a field to hold the last saved report (or a list if you prefer)
-
+    private Report lastReport;
     public void save(Report report) {
         // TODO: Store the report so getLastReport() can return it
+        this.lastReport=report;
     }
 
     public Report getLastReport() {
         // TODO: Return the last saved report, or null
-        return null;
+        return lastReport;
     }
 }
