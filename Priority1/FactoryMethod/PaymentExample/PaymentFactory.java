@@ -8,6 +8,10 @@ package Priority1.FactoryMethod.PaymentExample;
 public class PaymentFactory {
     public static Payment createPayment(String type) {
         // TODO: return correct Payment implementation based on type ("credit"/"creditcard" -> CreditCardPayment, "paypal" -> PayPalPayment)
-        return null;
+        switch (type){
+            case "credit", "creditcard": return new CreditCardPayment();
+            case "paypal": return new PayPalPayment();
+            default: return null;
+        }
     }
 }

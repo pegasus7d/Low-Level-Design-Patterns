@@ -20,6 +20,8 @@ public class CommandTest {
         TextEditor editor = new TextEditor();
         CommandInvoker invoker = new CommandInvoker();
         // TODO: invoker.setCommand(new WriteCommand(editor, "Hello")); invoker.executeCommand();
+        invoker.setCommand(new WriteCommand(editor,"Hello"));
+        invoker.executeCommand();
         assert "Hello".equals(editor.getText()) : "Editor should contain Hello";
         System.out.println("  ✓ Passed\n");
     }

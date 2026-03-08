@@ -16,7 +16,7 @@ public class PaymentFactoryTest {
     // TODO: Create Payment via PaymentFactory.createPayment("credit"), assert it is CreditCardPayment
     private static void testCreateCreditCard() {
         System.out.println("Test 1: Create Credit Card Payment");
-        Payment payment = null; // TODO: PaymentFactory.createPayment("credit")
+        Payment payment = PaymentFactory.createPayment("credit"); // TODO: PaymentFactory.createPayment("credit")
         assert payment != null : "Payment should not be null";
         assert payment instanceof CreditCardPayment : "Should be CreditCardPayment";
         System.out.println("  ✓ Passed\n");

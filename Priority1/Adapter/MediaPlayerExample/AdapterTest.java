@@ -16,7 +16,7 @@ public class AdapterTest {
     // TODO: MediaPlayer player = new VlcPlayerAdapter(); player.play("movie.vlc");
     private static void testPlayVlcViaAdapter() {
         System.out.println("Test 1: Play VLC via Adapter");
-        MediaPlayer player = null; // TODO: new VlcPlayerAdapter()
+        MediaPlayer player = new VlcPlayerAdapter(); // TODO: new VlcPlayerAdapter()
         assert player != null : "Player should not be null";
         player.play("movie.vlc");
         System.out.println("  ✓ Passed\n");

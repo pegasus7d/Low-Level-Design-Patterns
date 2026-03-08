@@ -18,6 +18,8 @@ public class StrategyTest {
         System.out.println("Test 1: Pay with Credit Card");
         ShoppingCart cart = new ShoppingCart();
         // TODO: cart.setStrategy(new CreditCardStrategy()); cart.pay(100.0);
+        cart.setStrategy( new CreditCardStrategy());
+        cart.pay(100.0);
         assert cart != null : "Cart should not be null";
         cart.pay(100.0); // will no-op until you set strategy above
         System.out.println("  ✓ Passed\n");

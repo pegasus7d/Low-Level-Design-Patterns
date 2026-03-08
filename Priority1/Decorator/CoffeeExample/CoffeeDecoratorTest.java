@@ -17,7 +17,8 @@ public class CoffeeDecoratorTest {
     //       assert cost and description contain "Milk" and "Whip"
     private static void testDecoratedCoffee() {
         System.out.println("Test 1: Coffee with Milk and Whip");
-        Beverage coffee = null; // TODO: new WhipDecorator(new MilkDecorator(new SimpleCoffee()))
+        // TODO: new WhipDecorator(new MilkDecorator(new SimpleCoffee()))
+        Beverage coffee = new WhipDecorator(new MilkDecorator(new SimpleCoffee()));
         assert coffee != null : "Coffee should not be null";
         assert coffee.getDescription().contains("Milk") : "Should have Milk";
         assert coffee.getDescription().contains("Whip") : "Should have Whip";

@@ -18,6 +18,8 @@ public class ObserverTest {
         WeatherSubject subject = new WeatherSubject();
         DisplayObserver obs = new DisplayObserver();
         // TODO: subject.attach(obs); subject.setWeather("Sunny");
+        subject.attach(obs);
+        subject.setWeather("Sunny");
         assert "Sunny".equals(obs.getLastWeather()) : "Observer should receive Sunny";
         System.out.println("  ✓ Passed\n");
     }

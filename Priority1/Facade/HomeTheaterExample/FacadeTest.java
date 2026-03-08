@@ -15,7 +15,8 @@ public class FacadeTest {
     // TODO: HomeTheaterFacade facade = new HomeTheaterFacade(); facade.watchMovie("Inception");
     private static void testWatchMovie() {
         System.out.println("Test 1: Watch Movie");
-        HomeTheaterFacade facade = null; // TODO: new HomeTheaterFacade(), then facade.watchMovie("Inception")
+        // TODO: new HomeTheaterFacade(), then facade.watchMovie("Inception")
+        HomeTheaterFacade facade= new HomeTheaterFacade();
         assert facade != null : "Facade should not be null";
         facade.watchMovie("Inception");
         System.out.println("  ✓ Passed\n");
