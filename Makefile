@@ -35,6 +35,20 @@ SOLID_OCP   = SolidPrinciples/OpenClosed/ShapeExample
 SOLID_LSP   = SolidPrinciples/LiskovSubstitution/ShapeExample
 SOLID_ISP   = SolidPrinciples/InterfaceSegregation/WorkerExample
 SOLID_DIP   = SolidPrinciples/DependencyInversion/NotificationExample
+CONC_THREADS = Concurrency/ThreadsRunnable
+CONC_POOL   = Concurrency/ThreadPoolLifecycle
+CONC_EXEC   = Concurrency/ThreadExecutors
+CONC_SYNC   = Concurrency/Synchronization
+CONC_COMM   = Concurrency/ThreadCommunication
+CONC_LOCKS  = Concurrency/Locks
+CONC_SEM    = Concurrency/Semaphore
+CONC_COLL   = Concurrency/ConcurrentCollections
+CONC_CF     = Concurrency/CompletableFuture
+CONC_ZEO    = Concurrency/ZeroEvenOdd
+CONC_FB     = Concurrency/FizzBuzzMultithreaded
+CONC_BBQ    = Concurrency/BoundedBlockingQueue
+CONC_DP     = Concurrency/DiningPhilosophers
+CONC_CRAWL  = Concurrency/MultithreadedWebCrawler
 
 # Build: compile ALL examples (fails if any skeleton is incomplete; use run-* to build/run one)
 build:
@@ -44,6 +58,7 @@ build:
 	@$(JAVAC) $(P2_ABSTRACT)/*.java $(P2_PROTOTYPE)/*.java $(P2_PROXY)/*.java $(P2_COMPOSITE)/*.java $(P2_TEMPLATE)/*.java $(P2_ITERATOR)/*.java $(P2_STATE)/*.java
 	@$(JAVAC) $(P3_POOL)/*.java $(P3_BRIDGE)/*.java $(P3_FLYWEIGHT)/*.java $(P3_CHAIN)/*.java $(P3_MEDIATOR)/*.java $(P3_MEMENTO)/*.java $(P3_VISITOR)/*.java
 	@$(JAVAC) $(SOLID_SRP)/*.java $(SOLID_OCP)/*.java $(SOLID_LSP)/*.java $(SOLID_ISP)/*.java $(SOLID_DIP)/*.java
+	@$(JAVAC) $(CONC_THREADS)/*.java $(CONC_POOL)/*.java $(CONC_EXEC)/*.java $(CONC_SYNC)/*.java $(CONC_COMM)/*.java $(CONC_LOCKS)/*.java $(CONC_SEM)/*.java $(CONC_COLL)/*.java $(CONC_CF)/*.java $(CONC_ZEO)/*.java $(CONC_FB)/*.java $(CONC_BBQ)/*.java $(CONC_DP)/*.java $(CONC_CRAWL)/*.java
 	@echo "Build done. Class files in $(OUT)/"
 
 # Run targets: compile ONLY that example then run (so incomplete skeletons don't break others)
@@ -160,6 +175,51 @@ run-dip:
 	@mkdir -p $(OUT) && $(JAVAC) $(SOLID_DIP)/*.java
 	$(JAVA) SolidPrinciples.DependencyInversion.NotificationExample.DIPTest
 
+# Concurrency (concepts)
+run-conc-threads:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_THREADS)/*.java
+	$(JAVA) Concurrency.ThreadsRunnable.ThreadsRunnableTest
+run-conc-pool:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_POOL)/*.java
+	$(JAVA) Concurrency.ThreadPoolLifecycle.ThreadPoolLifecycleTest
+run-conc-exec:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_EXEC)/*.java
+	$(JAVA) Concurrency.ThreadExecutors.ThreadExecutorsTest
+run-conc-sync:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_SYNC)/*.java
+	$(JAVA) Concurrency.Synchronization.SynchronizationTest
+run-conc-comm:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_COMM)/*.java
+	$(JAVA) Concurrency.ThreadCommunication.ThreadCommunicationTest
+run-conc-locks:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_LOCKS)/*.java
+	$(JAVA) Concurrency.Locks.LocksTest
+run-conc-sem:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_SEM)/*.java
+	$(JAVA) Concurrency.Semaphore.SemaphoreTest
+run-conc-coll:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_COLL)/*.java
+	$(JAVA) Concurrency.ConcurrentCollections.ConcurrentCollectionsTest
+run-conc-cf:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_CF)/*.java
+	$(JAVA) Concurrency.CompletableFuture.CompletableFutureTest
+# Concurrency (interview problems)
+run-conc-zero-even-odd:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_ZEO)/*.java
+	$(JAVA) Concurrency.ZeroEvenOdd.ZeroEvenOddTest
+run-conc-fizzbuzz:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_FB)/*.java
+	$(JAVA) Concurrency.FizzBuzzMultithreaded.FizzBuzzTest
+run-conc-bbq:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_BBQ)/*.java
+	$(JAVA) Concurrency.BoundedBlockingQueue.BoundedBlockingQueueTest
+run-conc-dining:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_DP)/*.java
+	$(JAVA) Concurrency.DiningPhilosophers.DiningPhilosophersTest
+run-conc-crawler:
+	@mkdir -p $(OUT) && $(JAVAC) $(CONC_CRAWL)/*.java
+	$(JAVA) Concurrency.MultithreadedWebCrawler.WebCrawlerTest
+
 # Run all Priority1 tests (each compiles only its own example)
 run-p1: run-pizza run-laptop run-logger run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command
 
@@ -179,7 +239,8 @@ help:
 	@echo "  make run-abstract-factory run-prototype run-proxy run-composite run-template run-iterator run-state"
 	@echo "  make run-pool run-bridge run-flyweight run-chain run-mediator run-memento run-visitor"
 	@echo "  make run-srp run-ocp run-lsp run-isp run-dip   - SOLID principles"
+	@echo "  make run-conc-threads run-conc-pool ... run-conc-crawler  - Concurrency"
 	@echo "  make run-p1         - run all Priority1 tests"
 	@echo "  make clean         - remove $(OUT)/"
 
-.PHONY: build clean help run-pizza run-laptop run-logger run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command run-abstract-factory run-prototype run-proxy run-composite run-template run-iterator run-state run-pool run-bridge run-flyweight run-chain run-mediator run-memento run-visitor run-srp run-ocp run-lsp run-isp run-dip run-p1
+.PHONY: build clean help run-pizza run-laptop run-logger run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command run-abstract-factory run-prototype run-proxy run-composite run-template run-iterator run-state run-pool run-bridge run-flyweight run-chain run-mediator run-memento run-visitor run-srp run-ocp run-lsp run-isp run-dip run-conc-threads run-conc-pool run-conc-exec run-conc-sync run-conc-comm run-conc-locks run-conc-sem run-conc-coll run-conc-cf run-conc-zero-even-odd run-conc-fizzbuzz run-conc-bbq run-conc-dining run-conc-crawler run-p1

@@ -235,6 +235,32 @@ These add concurrency/thread-safety and distributed-style thinking.
 | 3 | **Design Pub-Sub Model (e.g. Kafka-style)** | Topics, producers, consumers, offset, partition, delivery | Observer, queue, at-least-once / exactly-once |
 | 4 | **Design Rate Limiter (LLD)** | Limit by user/IP, sliding window or token bucket, allow/deny, thread-safe | Strategy (algorithm), Singleton (config) |
 
+### Concurrency in Java (9 topics)
+
+Assignments in `Concurrency/` — skeleton code + TODOs; run with `make run-conc-<name>`.
+
+| # | Topic | Assignment | Make target |
+|---|-------|------------|-------------|
+| 1 | **Threads — Thread class and Runnable** | PrintTask + start/join | `make run-conc-threads` |
+| 2 | **Thread pool and thread lifecycle** | Worker + ExecutorService | `make run-conc-pool` |
+| 3 | **Thread Executors** | SumTask (Callable) + Future | `make run-conc-exec` |
+| 4 | **Thread Synchronization** | Counter (synchronized increment) | `make run-conc-sync` |
+| 5 | **Thread Communication** | SharedBuffer (wait/notify) | `make run-conc-comm` |
+| 6 | **Locks and types of locks** | ResourceWithLock (ReentrantLock) | `make run-conc-locks` |
+| 7 | **Semaphore** | PermitTask (acquire/release) | `make run-conc-sem` |
+| 8 | **Java Concurrent Collections** | ConcurrentHashMap + AtomicInteger | `make run-conc-coll` |
+| 9 | **Future and CompletableFuture** | supplyAsync + thenApply | `make run-conc-cf` |
+
+### Concurrency Interview Problems (5)
+
+| # | Problem | Difficulty | Make target |
+|---|---------|------------|-------------|
+| 1 | **Print Zero Even Odd** | Medium | `make run-conc-zero-even-odd` |
+| 2 | **Fizz Buzz Multithreaded** | Medium | `make run-conc-fizzbuzz` |
+| 3 | **Design Bounded Blocking Queue** | Medium | `make run-conc-bbq` |
+| 4 | **The Dining Philosophers** | Hard | `make run-conc-dining` |
+| 5 | **Multithreaded Web Crawler** | Hard | `make run-conc-crawler` |
+
 ### Very Common (extended list)
 
 | Question | What to design | Key patterns / concepts |
@@ -354,6 +380,21 @@ javaLowLevelDesign/
 │   │   └── WorkerExample/         # Workable, Eatable, Human, Robot + ISPTest
 │   └── DependencyInversion/
 │       └── NotificationExample/   # MessageSender, EmailSender, UserService + DIPTest
+├── Concurrency/
+│   ├── ThreadsRunnable/          # Thread + Runnable (PrintTask) + ThreadsRunnableTest
+│   ├── ThreadPoolLifecycle/      # Thread pool, Worker + ThreadPoolLifecycleTest
+│   ├── ThreadExecutors/          # ExecutorService, Callable (SumTask) + ThreadExecutorsTest
+│   ├── Synchronization/          # Counter (synchronized) + SynchronizationTest
+│   ├── ThreadCommunication/      # wait/notify (SharedBuffer) + ThreadCommunicationTest
+│   ├── Locks/                    # ReentrantLock (ResourceWithLock) + LocksTest
+│   ├── Semaphore/                # Semaphore (PermitTask) + SemaphoreTest
+│   ├── ConcurrentCollections/    # ConcurrentHashMap, AtomicInteger + ConcurrentCollectionsTest
+│   ├── CompletableFuture/        # CompletableFutureTest
+│   ├── ZeroEvenOdd/              # Print Zero Even Odd (LeetCode 1116) + ZeroEvenOddTest
+│   ├── FizzBuzzMultithreaded/    # Fizz Buzz multithreaded (LeetCode 1195) + FizzBuzzTest
+│   ├── BoundedBlockingQueue/     # Bounded blocking queue (LeetCode 1188) + BoundedBlockingQueueTest
+│   ├── DiningPhilosophers/       # Dining philosophers (LeetCode 1226) + DiningPhilosophersTest
+│   └── MultithreadedWebCrawler/   # Multithreaded web crawler (LeetCode 1242) + WebCrawlerTest
 ├── creational/
 │   ├── singleton/
 │   ├── factory/
@@ -442,6 +483,25 @@ From the **project root** (`javaLowLevelDesign/`), use `make` to compile and run
 | `make run-lsp` | Liskov Substitution (Square) |
 | `make run-isp` | Interface Segregation (Robot / Workable) |
 | `make run-dip` | Dependency Inversion (UserService + MessageSender) |
+
+### Concurrency — run one test
+
+| Command | Description |
+|--------|-------------|
+| `make run-conc-threads` | Threads & Runnable |
+| `make run-conc-pool` | Thread pool & lifecycle |
+| `make run-conc-exec` | Thread Executors (Callable/Future) |
+| `make run-conc-sync` | Synchronization (Counter) |
+| `make run-conc-comm` | Thread communication (wait/notify) |
+| `make run-conc-locks` | Locks (ReentrantLock) |
+| `make run-conc-sem` | Semaphore |
+| `make run-conc-coll` | Concurrent collections |
+| `make run-conc-cf` | CompletableFuture |
+| `make run-conc-zero-even-odd` | Zero Even Odd |
+| `make run-conc-fizzbuzz` | Fizz Buzz multithreaded |
+| `make run-conc-bbq` | Bounded blocking queue |
+| `make run-conc-dining` | Dining philosophers |
+| `make run-conc-crawler` | Multithreaded web crawler |
 
 ### Usage
 
