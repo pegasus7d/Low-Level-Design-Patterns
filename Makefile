@@ -50,6 +50,7 @@ CONC_BBQ    = Concurrency/BoundedBlockingQueue
 CONC_DP     = Concurrency/DiningPhilosophers
 CONC_CRAWL  = Concurrency/MultithreadedWebCrawler
 PARKING_LOT = Questions/ParkingLot
+ELEVATOR_SYSTEM = Questions/ElevatorSystem
 
 # Build: compile ALL examples (fails if any skeleton is incomplete; use run-* to build/run one)
 build:
@@ -226,6 +227,11 @@ run-parking-lot:
 	@mkdir -p $(OUT) && $(JAVAC) $(PARKING_LOT)/*.java
 	$(JAVA) Questions.ParkingLot.ParkingLotMain
 
+# LLD Questions - Elevator System
+run-elevator:
+	@mkdir -p $(OUT) && $(JAVAC) $(ELEVATOR_SYSTEM)/*.java
+	$(JAVA) Questions.ElevatorSystem.ElevatorMain
+
 # Run all Priority1 tests (each compiles only its own example)
 run-p1: run-pizza run-laptop run-logger run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command
 
@@ -247,7 +253,8 @@ help:
 	@echo "  make run-srp run-ocp run-lsp run-isp run-dip   - SOLID principles"
 	@echo "  make run-conc-threads run-conc-pool ... run-conc-crawler  - Concurrency"
 	@echo "  make run-parking-lot - Parking Lot LLD (entry + exit + observers)"
+	@echo "  make run-elevator   - Elevator System LLD (State, Strategy, Observer)"
 	@echo "  make run-p1         - run all Priority1 tests"
 	@echo "  make clean         - remove $(OUT)/"
 
-.PHONY: build clean help run-pizza run-laptop run-logger run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command run-abstract-factory run-prototype run-proxy run-composite run-template run-iterator run-state run-pool run-bridge run-flyweight run-chain run-mediator run-memento run-visitor run-srp run-ocp run-lsp run-isp run-dip run-conc-threads run-conc-pool run-conc-exec run-conc-sync run-conc-comm run-conc-locks run-conc-sem run-conc-coll run-conc-cf run-conc-zero-even-odd run-conc-fizzbuzz run-conc-bbq run-conc-dining run-conc-crawler run-parking-lot run-p1
+.PHONY: build clean help run-pizza run-laptop run-logger run-payment-factory run-adapter run-decorator run-facade run-strategy run-observer run-command run-abstract-factory run-prototype run-proxy run-composite run-template run-iterator run-state run-pool run-bridge run-flyweight run-chain run-mediator run-memento run-visitor run-srp run-ocp run-lsp run-isp run-dip run-conc-threads run-conc-pool run-conc-exec run-conc-sync run-conc-comm run-conc-locks run-conc-sem run-conc-coll run-conc-cf run-conc-zero-even-odd run-conc-fizzbuzz run-conc-bbq run-conc-dining run-conc-crawler run-parking-lot run-elevator run-p1
