@@ -33,6 +33,7 @@ Runs `ElevatorMain`: registers observers, submits call + destination requests fo
 
 ## Docs
 
+- `design.md` — Class diagram (Mermaid), pattern summary, request flow, file layout.
 - `requirement.md` — System overview, rules, flow.
 - `entities.md` — Entities and properties.
 - `approach.md` — Design patterns used.
