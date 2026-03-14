@@ -1,5 +1,7 @@
 # Elevator System — Interview follow-up questions
 
+*Current implementation: no request queue; call and destination requests are applied immediately. The answers below describe what to add for concurrency and scale.*
+
 ## 1. “What if multiple people press buttons at the same time?” (Concurrent requests)
 
 **What to say:**  

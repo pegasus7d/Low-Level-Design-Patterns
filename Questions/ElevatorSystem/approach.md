@@ -19,4 +19,4 @@
 
 5. **Observer pattern for indicators and panels**
    - Elevators notify listeners when floor or state changes.
-   - **Implemented:** `ElevatorObserver` with `onFloorChanged(Elevator, int)` and `onStateChanged(Elevator, ElevatorState)`. `Elevator` has `addObserver()` and notifies in `setCurrentFloor` / `setStateBehavior` (only when value changes). Example: `DisplayPanelObserver` prints floor and state to console.
+   - **Implemented:** `ElevatorObserver` with `onFloorChanged(Elevator, int)` and `onStateChanged(Elevator, ElevatorState)`. `Elevator` has `addObserver()` and notifies in `setCurrentFloor` / `setStateBehavior` (only when value changes). Example: `DisplayPanelObserver(Building)` prints floor label (via `getFloors()`/`Floor.getId()`), direction (`getDirection().getDisplayName()`), and state (`getDisplayName()`) to console.

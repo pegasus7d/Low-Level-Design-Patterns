@@ -29,10 +29,11 @@
 |----------------|-------------------|------------------------------------|
 | id             | (e.g. int)        | Primary key                        |
 | currentFloor   | int               | Current floor position             |
-| direction      | Direction         | UP, DOWN, IDLE                     |
-| state          | ElevatorState     | IDLE, MOVING_UP, MOVING_DOWN, DOOR_OPEN, EMERGENCY_STOP, (OVERLOAD, MAINTENANCE) |
+| stateBehavior  | ElevatorStateBehavior | State pattern; behavior per state. State (e.g. IDLE, MOVING_UP, DOOR_OPEN) is derived via getState() = stateBehavior.getStateType(). |
 | stopList       | List\<Integer\> or Queue | Floors to stop at (ordered) |
 | doorObstructed | boolean           | Door sensor; if true, don’t close   |
+| previousDirection | Direction       | Used when leaving DOOR_OPEN to choose MOVING_UP/DOWN |
+| maxFloor       | int               | Top floor (0..maxFloor)             |
 
 ### Direction (enum)
 | Value  | Notes                    |
